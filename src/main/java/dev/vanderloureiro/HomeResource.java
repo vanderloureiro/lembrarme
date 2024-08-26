@@ -11,12 +11,12 @@ import jakarta.ws.rs.core.MediaType;
 
 import static java.util.Objects.requireNonNull;
 
-@Path("/some-page")
-public class SomePage {
+@Path("/home")
+public class HomeResource {
 
     private final Template page;
 
-    public SomePage(Template page) {
+    public HomeResource(Template page) {
         this.page = requireNonNull(page, "page is required");
     }
 

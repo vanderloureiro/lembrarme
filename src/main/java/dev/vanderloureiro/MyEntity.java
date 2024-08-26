@@ -1,7 +1,7 @@
 package dev.vanderloureiro;
 
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
-import jakarta.persistence.Entity;
+//import io.quarkus.hibernate.orm.panache.PanacheEntity;
+//import jakarta.persistence.Entity;
 
 
 /**
@@ -23,7 +23,11 @@ import jakarta.persistence.Entity;
  *     }
  * }
  */
-@Entity
-public class MyEntity extends PanacheEntity {
+//@Entity
+//public class MyEntity extends PanacheEntity {
+//    public String field;
+//}
+
+public class MyEntity {
     public String field;
 }
