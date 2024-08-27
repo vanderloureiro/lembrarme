@@ -2,29 +2,30 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Hello {name ?: "Qute"}</title>
+    <title>Relembrar-me</title>
     <style>
-        body {
-            background-color: #000;
-            color: #fff;
-        }
-        h1 {
-            color: #4695EB;
-            font-size: 6vw;
-        }
 
-        h1 b {
-            color: #be9100;
-        }
-
-        p {
-            font-size: 2vw;
-        }
     </style>
 </head>
 <body>
 <h1>Hello <b>{name ?: "Qute"}</b></h1>
 
-<p>Create your web page using Quarkus RESTEasy & Qute</p>
+<p>Envie uma mensagem pro futuro quando deseja ser notificado</p>
+
+<form action="" method="post">
+    <div>
+        <textarea name="conteudo" id="" cols="30" rows="10"></textarea>
+    </div>
+    <div>
+        <input type="email" name="email" id="">
+    </div>
+    <div>
+        <input type="date" name="date" id="">
+    </div>
+    <div>
+        <button type="submit">Enviar</button>
+    </div>
+
+</form>
 </body>
 </html>
