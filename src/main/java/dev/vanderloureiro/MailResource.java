@@ -6,11 +6,16 @@ import io.smallrye.common.annotation.Blocking;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.core.MediaType;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
+
+import java.util.List;
+import java.util.Random;
 
 @Path("/mail")
 public class MailResource {
+
+    @ConfigProperty(name = "app.messages")
+    List<String> messages;
 
     @Inject
     Mailer mailer;
@@ -18,8 +23,11 @@ public class MailResource {
     @GET
     @Blocking
     public void send() {
+        var random = new Random();
+        int selected = random.nextInt(messages.size() - 1);
+        var message = messages.get(selected);
         mailer.send(
-                Mail.withText("vanderloureiroleite@gmail.com","Relembrar-me", "- Preencha a planilha de horas!")
+                Mail.withText("vanderloureiroleite@gmail.com","Relembrar-me", message)
         );
     }
 }
