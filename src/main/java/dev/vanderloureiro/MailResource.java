@@ -8,6 +8,7 @@ import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 
@@ -23,6 +24,11 @@ public class MailResource {
     @GET
     @Blocking
     public void send() {
+        int startTimeDispatch = 7;
+        int endTimeDispatch = 8;
+        if (LocalDateTime.now().getHour() < startTimeDispatch || LocalDateTime.now().getHour() > endTimeDispatch) {
+            return;
+        }
         var random = new Random();
         int selected = random.nextInt(messages.size() - 1);
         var message = messages.get(selected);
