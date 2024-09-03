@@ -6,17 +6,12 @@ import io.smallrye.common.annotation.Blocking;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-import org.eclipse.microprofile.config.inject.ConfigProperty;
 
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Random;
 
 @Path("/mail")
 public class MailResource {
-
-    @ConfigProperty(name = "app.messages")
-    List<String> messages;
 
     @Inject
     Mailer mailer;
@@ -24,16 +19,14 @@ public class MailResource {
     @GET
     @Blocking
     public void send() {
-        int startTimeDispatch = 7;
-        int endTimeDispatch = 8;
-        if (LocalDateTime.now().getHour() < startTimeDispatch || LocalDateTime.now().getHour() > endTimeDispatch) {
-            return;
-        }
+        List<Message> messages = Message.getAllUnsent();
+
         var random = new Random();
-        int selected = random.nextInt(messages.size() - 1);
+        int selected = random.nextInt(messages.size());
         var message = messages.get(selected);
         mailer.send(
-                Mail.withText("vanderloureiroleite@gmail.com","Relembrar-me", message)
+                Mail.withText(message.receiver,"Relembrar-me", message.content)
         );
+        message.registerDispatch();
     }
 }
