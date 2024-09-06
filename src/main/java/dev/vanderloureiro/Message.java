@@ -27,6 +27,5 @@ public class Message extends PanacheEntity {
 
     public void registerDispatch() {
         this.lastDispatch = LocalDate.now();
-        Message.persist(this);
     }
 }
