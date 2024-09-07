@@ -1,5 +1,6 @@
 #Maven
 target/
+!target/relembrarme-1.0.0-SNAPSHOT.jar
 pom.xml.tag
 pom.xml.releaseBackup
 pom.xml.versionsBackup

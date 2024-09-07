@@ -2,7 +2,6 @@ package dev.vanderloureiro;
 
 import io.quarkus.mailer.Mail;
 import io.quarkus.mailer.Mailer;
-import io.smallrye.common.annotation.Blocking;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
