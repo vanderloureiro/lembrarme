@@ -1,5 +1,6 @@
-package dev.vanderloureiro;
+package dev.vanderloureiro.startup;
 
+import dev.vanderloureiro.email.SendEmailService;
 import io.quarkus.runtime.Startup;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
