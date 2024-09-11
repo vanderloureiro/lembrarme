@@ -1,6 +1,5 @@
-package dev.vanderloureiro;
+package dev.vanderloureiro.email;
 
-import dev.vanderloureiro.email.SendEmailService;
 import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

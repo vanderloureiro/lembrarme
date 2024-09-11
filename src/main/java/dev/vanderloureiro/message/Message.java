@@ -1,4 +1,4 @@
-package dev.vanderloureiro;
+package dev.vanderloureiro.message;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Column;

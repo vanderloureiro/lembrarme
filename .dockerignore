@@ -1,4 +1,8 @@
 *
+
+!pom.xml
+!src/
+
 !target/relembrarme-1.0.0-SNAPSHOT.jar
 !target/*-runner
 !target/*-runner.jar

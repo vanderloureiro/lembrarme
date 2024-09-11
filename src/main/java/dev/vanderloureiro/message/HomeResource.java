@@ -1,4 +1,4 @@
-package dev.vanderloureiro;
+package dev.vanderloureiro.message;
 
 import io.quarkus.qute.Template;
 import io.quarkus.qute.TemplateInstance;

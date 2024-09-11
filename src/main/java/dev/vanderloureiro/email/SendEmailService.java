@@ -1,6 +1,6 @@
 package dev.vanderloureiro.email;
 
-import dev.vanderloureiro.Message;
+import dev.vanderloureiro.message.Message;
 import io.quarkus.mailer.Mail;
 import io.quarkus.mailer.Mailer;
 import jakarta.enterprise.context.ApplicationScoped;
