@@ -27,7 +27,7 @@ public class SendEmailService {
         int selected = random.nextInt(messages.size());
         var message = messages.get(selected);
         mailer.send(
-                Mail.withText(message.receiver,"Relembrar-me", message.content)
+                Mail.withText(message.receiver,"Relembrar-me", message.body)
         );
         message.registerDispatch();
         message.persist();
