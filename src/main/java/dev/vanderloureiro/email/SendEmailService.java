@@ -18,7 +18,7 @@ public class SendEmailService {
 
     @Transactional
     public void sendTodayMessage() {
-        List<Message> messages = Message.getAllUnsent();
+        List<Message> messages = Message.getAllUnsent(1L);
         if (messages.isEmpty()) {
             return;
         }
@@ -27,7 +27,7 @@ public class SendEmailService {
         int selected = random.nextInt(messages.size());
         var message = messages.get(selected);
         mailer.send(
-                Mail.withText(message.receiver,"Relembrar-me", message.body)
+                Mail.withText(message.user.email,"Relembrar-me", message.body)
         );
         message.registerDispatch();
         message.persist();

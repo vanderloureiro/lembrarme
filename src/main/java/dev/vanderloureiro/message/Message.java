@@ -22,14 +22,11 @@ public class Message extends PanacheEntity {
     @JoinColumn(name = "user_id", nullable = false)
     public User user;
 
-    @Column(nullable = false)
-    public String receiver;
-
     @Column(name = "last_dispatch")
     public LocalDate lastDispatch;
 
-    public static List<Message> getAllUnsent() {
-        return list("from Message m where m.lastDispatch < ?1", LocalDate.now());
+    public static List<Message> getAllUnsent(Long userId) {
+        return list("from Message m where m.lastDispatch < ?1 and m.user_id = ?2", LocalDate.now(), userId);
     }
 
     public void registerDispatch() {

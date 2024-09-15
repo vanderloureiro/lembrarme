@@ -16,6 +16,9 @@ public class User extends PanacheEntity {
 
     public String username;
 
+    @Column
+    public String email;
+
     @Column(name = "email_verified")
     public Boolean emailVerified;
 
