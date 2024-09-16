@@ -6,6 +6,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.ZonedDateTime;
 import java.util.List;
@@ -16,12 +17,13 @@ public class User extends PanacheEntity {
 
     public String username;
 
-    @Column
+    @Column(nullable = false)
     public String email;
 
     @Column(name = "email_verified")
     public Boolean emailVerified;
 
+    @CreationTimestamp
     @Column(name = "created_at")
     public ZonedDateTime createdAt;
 
