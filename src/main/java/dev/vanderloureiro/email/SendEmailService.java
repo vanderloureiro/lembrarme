@@ -18,11 +18,8 @@ public class SendEmailService {
 
     @Transactional
     public void sendTodayMessage() {
-        /**
-         * Usado o id 1 para MVP com usuário salvo direto na base
-         * */
-        Long userIdFixed = 1L;
-        List<Message> messages = Message.getAllUnsent(userIdFixed);
+
+        List<Message> messages = Message.getAllUnsent();
         if (messages.isEmpty()) {
             return;
         }
@@ -31,7 +28,7 @@ public class SendEmailService {
         int selected = random.nextInt(messages.size());
         var message = messages.get(selected);
         mailer.send(
-                Mail.withText(message.user.email,"Relembrar-me", message.body)
+                Mail.withText(message.email,"Relembrar-me", message.body)
         );
         message.registerDispatch();
         message.persist();

@@ -1,11 +1,8 @@
 package dev.vanderloureiro.message;
 
-import dev.vanderloureiro.user.User;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import java.time.LocalDate;
@@ -18,15 +15,22 @@ public class Message extends PanacheEntity {
     @Column(nullable = false)
     public String body;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    public User user;
+    public String email;
+
+    @Column(name = "recurrence_type")
+    public RecurrenceType recurrenceType;
+
+    @Column(name = "specific_day")
+    public Integer specificDay;
 
     @Column(name = "last_dispatch")
     public LocalDate lastDispatch;
 
-    public static List<Message> getAllUnsent(Long userId) {
-        return list("from Message m where m.lastDispatch < ?1 and m.user_id = ?2", LocalDate.now(), userId);
+    @Column(name = "next_dispatch")
+    public LocalDate nextDispatch;
+
+    public static List<Message> getAllUnsent() {
+        return list("from Message m where m.nextDispatch != m.lastDispatch AND m.nextDispatch = ?1", LocalDate.now());
     }
 
     public void registerDispatch() {
