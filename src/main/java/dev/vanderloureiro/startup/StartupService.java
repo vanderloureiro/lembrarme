@@ -1,13 +1,11 @@
 package dev.vanderloureiro.startup;
 
-import dev.vanderloureiro.email.SendEmailService;
-import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
+import dev.vanderloureiro.message.SendMessageService;
 import io.quarkus.runtime.Startup;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
-import java.time.LocalDate;
 import java.util.Optional;
 
 import static jakarta.transaction.Transactional.TxType.SUPPORTS;
@@ -16,7 +14,7 @@ import static jakarta.transaction.Transactional.TxType.SUPPORTS;
 public class StartupService {
 
     @Inject
-    SendEmailService sendEmailService;
+    SendMessageService sendMessageService;
 
     @Startup
     @Transactional(SUPPORTS)
@@ -32,6 +30,6 @@ public class StartupService {
         startup.updateRecord();
         startup.persist();
 
-        sendEmailService.sendTodayMessage();
+        sendMessageService.sendTodayMessage();
     }
 }

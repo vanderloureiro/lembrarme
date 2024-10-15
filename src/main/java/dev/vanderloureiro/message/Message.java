@@ -30,10 +30,11 @@ public class Message extends PanacheEntity {
     public LocalDate nextDispatch;
 
     public static List<Message> getAllUnsent() {
-        return list("from Message m where m.nextDispatch != m.lastDispatch AND m.nextDispatch = ?1", LocalDate.now());
+        return list("from Message m where m.lastDispatch != ?1", LocalDate.now());
     }
 
     public void registerDispatch() {
         this.lastDispatch = LocalDate.now();
     }
+
 }

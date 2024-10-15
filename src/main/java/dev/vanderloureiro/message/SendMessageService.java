@@ -1,6 +1,5 @@
-package dev.vanderloureiro.email;
+package dev.vanderloureiro.message;
 
-import dev.vanderloureiro.message.Message;
 import io.quarkus.mailer.Mail;
 import io.quarkus.mailer.Mailer;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -11,7 +10,7 @@ import java.util.List;
 import java.util.Random;
 
 @ApplicationScoped
-public class SendEmailService {
+public class SendMessageService {
 
     @Inject
     Mailer mailer;
