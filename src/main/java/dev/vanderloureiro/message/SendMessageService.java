@@ -7,7 +7,6 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
-import java.util.Random;
 
 @ApplicationScoped
 public class SendMessageService {
@@ -23,13 +22,12 @@ public class SendMessageService {
             return;
         }
 
-        var random = new Random();
-        int selected = random.nextInt(messages.size());
-        var message = messages.get(selected);
-        mailer.send(
-                Mail.withText(message.email,"Relembrar-me", message.body)
-        );
-        message.registerDispatch();
-        message.persist();
+        for (Message message : messages) {
+            mailer.send(
+                    Mail.withText(message.email,"Relembrar-me", message.body)
+            );
+            message.registerDispatch();
+            message.persist();
+        }
     }
 }
