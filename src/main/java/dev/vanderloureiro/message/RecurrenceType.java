@@ -3,6 +3,7 @@ package dev.vanderloureiro.message;
 public enum RecurrenceType {
 
     SINGLE,
+    EVERYDAY,
     SUNDAY,
     MONDAY,
     TUESDAY,
