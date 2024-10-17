@@ -11,7 +11,7 @@ public class MessageScheduler {
     @Inject
     SendMessageService sendMessageService;
 
-    @Scheduled(cron="0 0 6 * * ?")
+    @Scheduled(cron="0 0 9 * * ?")
     void cronJob() {
         sendMessageService.sendTodayMessage();
     }
