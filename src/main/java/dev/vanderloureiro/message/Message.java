@@ -3,6 +3,8 @@ package dev.vanderloureiro.message;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Table;
 
 import java.time.DayOfWeek;
@@ -20,6 +22,7 @@ public class Message extends PanacheEntity {
     public String email;
 
     @Column(name = "recurrence_type")
+    @Enumerated(EnumType.STRING)
     public RecurrenceType recurrenceType;
 
     @Column(name = "specific_day")
