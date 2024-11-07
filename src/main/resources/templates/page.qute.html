@@ -4,28 +4,104 @@
     <meta charset="UTF-8">
     <title>Relembrar-me</title>
     <style>
-
+        @import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+        body {
+            font-family: "Work Sans", serif;
+            padding: 0;
+            margin: 0;
+            color: #0D1C12;
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 2%;
+        }
+        input, textarea, select {
+            background-color: #E8F2ED;
+            border: none;
+            width: 440px;
+            padding: 10px;
+            border-radius: 12px
+        }
+        input {
+            height: 40px;
+        }
+        label {
+            font-weight: 500;
+        }
+        button {
+            background-color: #1AE56E;
+            color: #0D1C12;
+            border-radius: 12px;
+            font-weight: bold;
+            border: none;
+            height: 40px;
+            width: 80px;
+        }
+        button:hover {
+            cursor: pointer;
+        }
+        #agendar, select {
+            width: 460px;
+        }
+        hr {
+            opacity: 0.5;
+        }
+        .content {
+            margin: 4% 20%;
+        }
+        .input-field {
+            margin: 2% 0;
+        }
     </style>
 </head>
 <body>
-<h1>Hello <b>{name ?: "Qute"}</b></h1>
 
-<p>Envie uma mensagem pro futuro quando deseja ser notificado</p>
+<header>
+    <h1>Lembrar-me</h1>
+    <button>Entrar</button>
+</header>
 
-<form action="" method="post">
-    <div>
-        <textarea name="conteudo" id="" cols="30" rows="10"></textarea>
-    </div>
-    <div>
-        <input type="email" name="email" id="">
-    </div>
-    <div>
-        <input type="date" name="date" id="">
-    </div>
-    <div>
-        <button type="submit">Enviar</button>
-    </div>
+<hr>
 
-</form>
+<div class="content">
+    <h2>Agende uma mensagem</h2>
+    <p>Envie uma mensagem pro futuro quando deseja ser notificado</p>
+
+    <form action="" method="post">
+        <div class="input-field">
+            <label for="conteudo">Escreva sua mensagem</label><br>
+            <textarea name="conteudo" id="" cols="30" rows="10"></textarea>
+        </div>
+        <div class="input-field">
+            <label for="email">E-mail</label><br>
+            <input type="email" name="email" id="">
+        </div>
+        <div class="input-field">
+            <label for="recurrence">Recorrência</label><br>
+            <select name="recurrence" id="recurrence">
+                <option value="volvo" selected>Uma única vez</option>
+                <option value="volvo">Toda segunda-feira</option>
+                <option value="saab">Toda terça-feira</option>
+                <option value="mercedes">Toda quarta-feita</option>
+                <option value="audi">Toda quinta-feira</option>
+                <option value="audi">Toda sexta-feira</option>
+                <option value="audi">Todo sábado</option>
+                <option value="audi">Todo domingo</option>
+                <option value="audi">Todo dia da semana</option>
+                <option value="audi">Aos finais de semana</option>
+            </select>
+        </div>
+        <div class="input-field">
+            <label for="date">Data de recebimento</label><br>
+            <input type="date" name="date" id="">
+        </div>
+        <div class="input-field">
+            <button type="submit" id="agendar">Agendar mensagem</button>
+        </div>
+
+    </form>
+</div>
 </body>
 </html>
