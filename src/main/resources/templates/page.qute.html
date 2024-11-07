@@ -69,10 +69,10 @@
     <h2>Agende uma mensagem</h2>
     <p>Envie uma mensagem pro futuro quando deseja ser notificado</p>
 
-    <form action="" method="post">
+    <form action="/create" method="post">
         <div class="input-field">
             <label for="conteudo">Escreva sua mensagem</label><br>
-            <textarea name="conteudo" id="" cols="30" rows="10"></textarea>
+            <textarea name="body" id="" cols="30" rows="10"></textarea>
         </div>
         <div class="input-field">
             <label for="email">E-mail</label><br>
@@ -81,16 +81,17 @@
         <div class="input-field">
             <label for="recurrence">Recorrência</label><br>
             <select name="recurrence" id="recurrence">
-                <option value="volvo" selected>Uma única vez</option>
-                <option value="volvo">Toda segunda-feira</option>
-                <option value="saab">Toda terça-feira</option>
-                <option value="mercedes">Toda quarta-feita</option>
-                <option value="audi">Toda quinta-feira</option>
-                <option value="audi">Toda sexta-feira</option>
-                <option value="audi">Todo sábado</option>
-                <option value="audi">Todo domingo</option>
-                <option value="audi">Todo dia da semana</option>
-                <option value="audi">Aos finais de semana</option>
+                <option value="SINGLE" selected>Uma única vez</option>
+                <option value="MONDAY">Toda segunda-feira</option>
+                <option value="TUESDAY">Toda terça-feira</option>
+                <option value="WEDNESDAY">Toda quarta-feita</option>
+                <option value="THURSDAY">Toda quinta-feira</option>
+                <option value="FRIDAY">Toda sexta-feira</option>
+                <option value="SATURDAY">Todo sábado</option>
+                <option value="SUNDAY">Todo domingo</option>
+                <option value="WEEKDAYS">Todo dia da semana</option>
+                <option value="WEEKEND">Aos finais de semana</option>
+                <option value="RANDOM">Aleatório</option>
             </select>
         </div>
         <div class="input-field">
