@@ -17,6 +17,11 @@
             align-items: center;
             margin: 0 2%;
         }
+        footer {
+            display: flex;
+            justify-content: center;
+            padding: 10px 0 18px 0;;
+        }
         input, textarea, select {
             background-color: #E8F2ED;
             border: none;
@@ -53,13 +58,21 @@
         }
         .input-field {
             margin: 2% 0;
+            display: grid;
+        }
+        label {
+            margin-bottom: 5px;
+        }
+        a {
+            text-decoration: none;
+            color: #0D1C12;
         }
     </style>
 </head>
 <body>
 
 <header>
-    <h1>Lembrar-me</h1>
+    <a href="/"><h1>Lembrar-me</h1></a>
     <button>Entrar</button>
 </header>
 
@@ -67,19 +80,19 @@
 
 <div class="content">
     <h2>Agende uma mensagem</h2>
-    <p>Envie uma mensagem pro futuro quando deseja ser notificado</p>
+    <p>Envie uma mensagem para o futuro e escolha quando deseja receber</p>
 
     <form action="/create" method="post">
         <div class="input-field">
-            <label for="conteudo">Escreva sua mensagem</label><br>
+            <label for="conteudo">Escreva sua mensagem</label>
             <textarea name="body" id="" cols="30" rows="10"></textarea>
         </div>
         <div class="input-field">
-            <label for="email">E-mail</label><br>
+            <label for="email">E-mail</label>
             <input type="email" name="email" id="">
         </div>
         <div class="input-field">
-            <label for="recurrence">Recorrência</label><br>
+            <label for="recurrence">Recorrência</label>
             <select name="recurrence" id="recurrence">
                 <option value="SINGLE" selected>Uma única vez</option>
                 <option value="MONDAY">Toda segunda-feira</option>
@@ -95,7 +108,7 @@
             </select>
         </div>
         <div class="input-field">
-            <label for="date">Data de recebimento</label><br>
+            <label for="date">Data de recebimento</label>
             <input type="date" name="date" id="">
         </div>
         <div class="input-field">
@@ -104,5 +117,11 @@
 
     </form>
 </div>
+
+<hr>
+
+<footer>
+    <span>Lembrar-me</span>
+</footer>
 </body>
 </html>

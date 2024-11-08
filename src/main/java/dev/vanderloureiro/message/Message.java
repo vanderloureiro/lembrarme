@@ -17,22 +17,30 @@ import java.util.Random;
 public class Message extends PanacheEntity {
 
     @Column(nullable = false)
-    public String body;
+    private String body;
 
-    public String email;
+    private String email;
 
     @Column(name = "recurrence_type")
     @Enumerated(EnumType.STRING)
-    public RecurrenceType recurrenceType;
+    private RecurrenceType recurrenceType;
 
     @Column(name = "specific_day")
-    public Integer specificDay;
+    private Integer specificDay;
 
     @Column(name = "last_dispatch")
-    public LocalDate lastDispatch;
+    private LocalDate lastDispatch;
 
     @Column(name = "next_dispatch")
-    public LocalDate nextDispatch;
+    private LocalDate nextDispatch;
+
+    public Message(String body, String email, RecurrenceType recurrence, LocalDate date, Integer specificDay) {
+        this.body = body;
+        this.email = email;
+        this.recurrenceType = recurrence;
+        this.nextDispatch = date;
+        this.specificDay = specificDay;
+    }
 
     public static List<Message> getAllUnsent() {
         return list("from Message m where m.lastDispatch != m.nextDispatch AND m.nextDispatch = ?1", LocalDate.now());
@@ -41,6 +49,10 @@ public class Message extends PanacheEntity {
     public void registerDispatch() {
         this.lastDispatch = LocalDate.now();
         this.calculateNextDispatchFromToday();
+    }
+
+    public void registerSingleDispatch(LocalDate date) {
+        nextDispatch = date;
     }
 
     private void calculateNextDispatchFromToday() {
@@ -78,6 +90,14 @@ public class Message extends PanacheEntity {
                 nextDispatch = LocalDate.now().plusMonths(1);
             }
         }
+    }
+
+    public String getEmail() {
+        return this.email;
+    }
+
+    public String getBody() {
+        return this.body;
     }
 
 }

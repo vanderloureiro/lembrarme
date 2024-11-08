@@ -5,16 +5,11 @@ import io.quarkus.qute.TemplateInstance;
 
 import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.Consumes;
-import jakarta.ws.rs.FormParam;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
-import org.jboss.resteasy.reactive.RestForm;
-
-import java.util.Map;
 
 import static java.util.Objects.requireNonNull;
 
@@ -22,9 +17,11 @@ import static java.util.Objects.requireNonNull;
 public class HomeResource {
 
     private final Template page;
+    private final SaveMessageService saveMessageService;
 
-    public HomeResource(Template page) {
+    public HomeResource(Template page, SaveMessageService saveMessageService) {
         this.page = requireNonNull(page, "page is required");
+        this.saveMessageService = saveMessageService;
     }
 
     @GET
@@ -38,12 +35,9 @@ public class HomeResource {
     @Path("/create")
     @Produces(MediaType.TEXT_HTML)
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-    public TemplateInstance post(
-            @FormParam("body") String body,
-            @FormParam("email") String email,
-            @FormParam("date") String date,
-            @FormParam("recurrence") String recurrence) {
+    public TemplateInstance post(@BeanParam MessageForm form) {
 
+        saveMessageService.execute(form);
         return page.instance();
     }
 

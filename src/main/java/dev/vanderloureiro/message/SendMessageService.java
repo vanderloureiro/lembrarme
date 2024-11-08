@@ -24,7 +24,7 @@ public class SendMessageService {
 
         for (Message message : messages) {
             mailer.send(
-                    Mail.withText(message.email,"Relembrar-me", message.body)
+                    Mail.withText(message.getEmail(),"Relembrar-me", message.getBody())
             );
             message.registerDispatch();
             message.persist();
