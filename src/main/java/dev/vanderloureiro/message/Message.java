@@ -1,5 +1,6 @@
 package dev.vanderloureiro.message;
 
+import dev.vanderloureiro.user.User;
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Column;
@@ -9,6 +10,8 @@ import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 import java.time.DayOfWeek;
@@ -41,6 +44,10 @@ public class Message extends PanacheEntityBase {
 
     @Column(name = "next_dispatch")
     private LocalDate nextDispatch;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 
     private Message() {}
 
