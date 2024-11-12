@@ -1,10 +1,14 @@
 package dev.vanderloureiro.message;
 
 import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 import java.time.DayOfWeek;
@@ -14,7 +18,11 @@ import java.util.Random;
 
 @Entity
 @Table(name = "messages")
-public class Message extends PanacheEntity {
+public class Message extends PanacheEntityBase {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     @Column(nullable = false)
     private String body;
@@ -34,12 +42,17 @@ public class Message extends PanacheEntity {
     @Column(name = "next_dispatch")
     private LocalDate nextDispatch;
 
+    private Message() {}
+
     public Message(String body, String email, RecurrenceType recurrence, LocalDate date, Integer specificDay) {
         this.body = body;
         this.email = email;
         this.recurrenceType = recurrence;
         this.nextDispatch = date;
         this.specificDay = specificDay;
+        if (!RecurrenceType.SINGLE.equals(recurrence)) {
+            calculateNextDispatchFromToday();
+        }
     }
 
     public static List<Message> getAllUnsent() {
