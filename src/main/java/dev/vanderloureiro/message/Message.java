@@ -1,7 +1,6 @@
 package dev.vanderloureiro.message;
 
 import dev.vanderloureiro.user.User;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -51,12 +50,13 @@ public class Message extends PanacheEntityBase {
 
     private Message() {}
 
-    public Message(String body, String email, RecurrenceType recurrence, LocalDate date, Integer specificDay) {
+    public Message(String body, String email, RecurrenceType recurrence, LocalDate date, Integer specificDay, User user) {
         this.body = body;
         this.email = email;
         this.recurrenceType = recurrence;
         this.nextDispatch = date;
         this.specificDay = specificDay;
+        this.user = user;
         if (!RecurrenceType.SINGLE.equals(recurrence)) {
             calculateNextDispatchFromToday();
         }

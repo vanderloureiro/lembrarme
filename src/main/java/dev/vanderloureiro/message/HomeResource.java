@@ -13,7 +13,7 @@ import jakarta.ws.rs.core.MediaType;
 
 import static java.util.Objects.requireNonNull;
 
-@Path("/")
+@Path("")
 public class HomeResource {
 
     private final Template page;

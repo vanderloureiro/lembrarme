@@ -17,4 +17,7 @@ public class MessageForm {
 
     @FormParam("recurrence")
     public String recurrence;
+
+    @FormParam("user_id")
+    public Long userId;
 }

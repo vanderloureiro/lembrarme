@@ -9,7 +9,9 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import org.hibernate.annotations.CreationTimestamp;
 
+import java.time.OffsetDateTime;
 import java.util.List;
 
 @Entity
@@ -26,11 +28,22 @@ public class User extends PanacheEntityBase {
     @Column(nullable = false)
     private String email;
 
-    @Column(nullable = false)
+    @Column(name = "is_email_valid", nullable = false)
     private Boolean isEmailValid = false;
+
+    @CreationTimestamp
+    @Column(name = "created_at", nullable = false)
+    private OffsetDateTime createdAt;
 
     @OneToMany
     private List<Message> messages;
+
+    private User() { }
+
+    public User(String username, String email) {
+        this.username = username;
+        this.email = email;
+    }
 
     private String getEmail() {
         if (isEmailValid) {

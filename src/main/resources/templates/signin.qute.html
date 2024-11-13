@@ -73,48 +73,22 @@
 
 <header>
     <a href="/"><h1>Lembrar-me</h1></a>
-    <a href="/signin">Entrar</a>
+    <!--<button>Entrar</button>-->
 </header>
 
 <hr>
 
 <div class="content">
-    <h2>Agende uma mensagem</h2>
-    <p>Envie uma mensagem para o futuro e escolha quando deseja receber</p>
-
-    <form action="/create" method="post">
+    <h2>Entrar</h2>
+    <p>Entre com o seu e-mail</p>
+    <form action="/signin" method="post">
         <div class="input-field">
-            <label for="conteudo">Escreva sua mensagem</label>
-            <textarea name="body" id="" cols="30" rows="10"></textarea>
-        </div>
-        <div class="input-field">
-            <label for="email">E-mail</label>
+            <label for="email">Email</label>
             <input type="email" name="email" id="">
         </div>
         <div class="input-field">
-            <label for="recurrence">Recorrência</label>
-            <select name="recurrence" id="recurrence">
-                <option value="SINGLE" selected>Uma única vez</option>
-                <option value="MONDAY">Toda segunda-feira</option>
-                <option value="TUESDAY">Toda terça-feira</option>
-                <option value="WEDNESDAY">Toda quarta-feita</option>
-                <option value="THURSDAY">Toda quinta-feira</option>
-                <option value="FRIDAY">Toda sexta-feira</option>
-                <option value="SATURDAY">Todo sábado</option>
-                <option value="SUNDAY">Todo domingo</option>
-                <option value="WEEKDAYS">Todo dia da semana</option>
-                <option value="WEEKEND">Aos finais de semana</option>
-                <option value="RANDOM">Aleatório</option>
-            </select>
+            <button type="submit" id="agendar">Entrar</button>
         </div>
-        <div class="input-field">
-            <label for="date">Data de recebimento</label>
-            <input type="date" name="date" id="">
-        </div>
-        <div class="input-field">
-            <button type="submit" id="agendar">Agendar mensagem</button>
-        </div>
-
     </form>
 </div>
 
