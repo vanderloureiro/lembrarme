@@ -37,6 +37,7 @@ public class HomeResource {
     @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
     public TemplateInstance post(@BeanParam MessageForm form) {
 
+        form.userId = 1L;
         saveMessageService.execute(form);
         return page.instance();
     }

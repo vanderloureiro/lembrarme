@@ -7,6 +7,8 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import org.jboss.logging.Logger;
 
+import java.util.Optional;
+
 @ApplicationScoped
 public class SaveMessageService {
 
@@ -18,10 +20,10 @@ public class SaveMessageService {
     @Transactional
     public void execute(MessageForm form) {
 
-        User user = User.findById(form.userId);
+        Optional<User> userOpt = User.findByIdOptional(form.userId);
 
-        if (!user.isPersistent()) {
-
+        if (userOpt.isEmpty()) {
+            throw new RuntimeException("Usuário não existe");
         }
 
         var message = new Message(
@@ -30,7 +32,7 @@ public class SaveMessageService {
                 RecurrenceType.valueOf(form.recurrence),
                 form.date,
                 null,
-                user);
+                userOpt.get());
 
         Message.persist(message);
     }
