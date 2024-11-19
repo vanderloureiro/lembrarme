@@ -7,8 +7,9 @@ import jakarta.transaction.Transactional;
 public class CreateUserService {
 
     @Transactional
-    public void execute(String username, String email) {
+    public User execute(String username, String email) {
         User user = new User(username, email);
         User.persist(user);
+        return user;
     }
 }

@@ -9,6 +9,8 @@ import org.jboss.logging.Logger;
 
 import java.util.Optional;
 
+import static jakarta.transaction.Transactional.TxType.SUPPORTS;
+
 @ApplicationScoped
 public class SaveMessageService {
 
@@ -21,18 +23,19 @@ public class SaveMessageService {
     public void execute(MessageForm form) {
 
         Optional<User> userOpt = User.findByIdOptional(form.userId);
+        User user;
 
-        if (userOpt.isEmpty()) {
-            throw new RuntimeException("Usuário não existe");
-        }
+        user = userOpt.orElseGet(() -> createUserService.execute(form.email, form.email));
 
+        Optional<User> user1Opt = User.findByIdOptional(1);
+        user = user1Opt.get();
         var message = new Message(
                 form.body,
                 form.email,
                 RecurrenceType.valueOf(form.recurrence),
                 form.date,
                 null,
-                userOpt.get());
+                user);
 
         Message.persist(message);
     }
