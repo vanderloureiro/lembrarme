@@ -11,6 +11,7 @@ import java.util.Optional;
 
 import static jakarta.transaction.Transactional.TxType.SUPPORTS;
 
+
 @ApplicationScoped
 public class SaveMessageService {
 
@@ -25,10 +26,12 @@ public class SaveMessageService {
         Optional<User> userOpt = User.findByIdOptional(form.userId);
         User user;
 
-        user = userOpt.orElseGet(() -> createUserService.execute(form.email, form.email));
+        if (userOpt.isEmpty()) {
+            user = createUserService.execute(form.email, form.email);
+        } else {
+            user = userOpt.get();
+        }
 
-        Optional<User> user1Opt = User.findByIdOptional(1);
-        user = user1Opt.get();
         var message = new Message(
                 form.body,
                 form.email,
