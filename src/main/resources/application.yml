@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: lembrarme
+
+  database:
+    driverClassName: org.postgresql.Driver
+  datasource:
+    platform: postgres
+    url: ${DB_URL}
+    username: ${DB_USER}
+    password: ${DB_PASSWORD}
