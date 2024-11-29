@@ -3,5 +3,5 @@ package dev.vanderloureiro.lembrarme.message;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SaveMessageService {
+public class SendEmailService {
 }
