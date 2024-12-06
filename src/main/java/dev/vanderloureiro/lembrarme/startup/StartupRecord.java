@@ -20,6 +20,14 @@ public class StartupRecord {
     @Column(name = "last_startup", nullable = false)
     LocalDate lastStartup;
 
+    private StartupRecord () {}
+
+    public static StartupRecord init() {
+        var instance = new StartupRecord();
+        instance.lastStartup = LocalDate.now();
+        return instance;
+    }
+
     public void updateRecord() {
         this.lastStartup = LocalDate.now();
     }
