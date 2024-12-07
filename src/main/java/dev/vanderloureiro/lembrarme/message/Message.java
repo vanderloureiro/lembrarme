@@ -43,9 +43,9 @@ public class Message {
     @Column(name = "next_dispatch")
     private LocalDate nextDispatch;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+//    @ManyToOne
+//    @JoinColumn(name = "user_id", nullable = false)
+//    private User user;
 
     private Message() {}
 
@@ -55,7 +55,6 @@ public class Message {
         this.recurrenceType = recurrence;
         this.nextDispatch = date;
         this.specificDay = specificDay;
-        this.user = user;
         if (!RecurrenceType.SINGLE.equals(recurrence)) {
             calculateNextDispatchFromToday();
         }

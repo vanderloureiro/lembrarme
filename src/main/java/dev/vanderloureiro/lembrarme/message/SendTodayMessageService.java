@@ -22,7 +22,7 @@ public class SendTodayMessageService {
     private JavaMailSender emailSender;
 
     public void execute() {
-        List<Message> messages = repository.getAllUnsent(LocalDate.now());
+        List<Message> messages = repository.findAll();
         if (messages.isEmpty()) {
             System.out.println("Não tem mensagens");
             return;

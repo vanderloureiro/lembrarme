@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 interface MessageRepository extends JpaRepository<Message, Long> {
 
-    @Query(value = "SELECT * FROM Messages m WHERE m.last_dispatch != m.next_dispatch AND m.next_dispatch = :date", nativeQuery = true)
+    @Query(value = "SELECT * FROM Messages m WHERE m.last_dispatch != m.next_dispatch", nativeQuery = true)
     List<Message> getAllUnsent(@Param("date") LocalDate date);
 }
