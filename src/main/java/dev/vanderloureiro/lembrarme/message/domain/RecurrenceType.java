@@ -1,4 +1,4 @@
-package dev.vanderloureiro.lembrarme.message;
+package dev.vanderloureiro.lembrarme.message.domain;
 
 public enum RecurrenceType {
 

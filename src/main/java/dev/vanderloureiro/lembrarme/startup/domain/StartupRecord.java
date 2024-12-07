@@ -1,4 +1,4 @@
-package dev.vanderloureiro.lembrarme.startup;
+package dev.vanderloureiro.lembrarme.startup.domain;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

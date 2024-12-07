@@ -1,5 +1,6 @@
 package dev.vanderloureiro.lembrarme.startup;
 
+import dev.vanderloureiro.lembrarme.startup.domain.StartupRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
